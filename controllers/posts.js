@@ -41,13 +41,27 @@ module.exports = {
   },
   likePost: async (req, res) => {
     try {
-      await Post.findOneAndUpdate(
-        { _id: req.params.id },
+      await Post.findByIdAndUpdate(
+        req.params.id,
         {
-          $inc: { likes: 1 },
+          $push: { likes: req.user.id },
         }
       );
-      console.log("Likes +1");
+      console.log(`Like added by ${req.user.id}`);
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  unlikePost: async (req, res) => {
+    try {
+      await Post.findByIdAndUpdate(
+        req.params.id,
+        {
+          $pull: { likes: req.user.id },
+        }
+      );
+      console.log("Like Removed");
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);
