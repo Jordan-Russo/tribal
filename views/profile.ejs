@@ -6,6 +6,7 @@
               <p><strong>User Name</strong>: <%= user.userName %></p>
               <% if(ownProfile){ %>
                 <p><strong>Email</strong>: <%= user.email %></p>
+                <a href="/favorites" class="col-3 btn btn-primary">View Favorites</a>
                 <a href="/logout" class="col-3 btn btn-primary">Logout</a>
               <% } %>
           </div>
