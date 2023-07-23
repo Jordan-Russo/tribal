@@ -8,7 +8,7 @@ module.exports = {
     try {
       const client = await User.findById(req.user.id).populate('favorites');
       const posts = client.favorites
-      res.render("feed.ejs", { posts });
+      res.render("feed.ejs", { posts, user: req.user });
     } catch (err) {
       console.log(err);
     }

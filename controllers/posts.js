@@ -6,7 +6,7 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts });
+      res.render("feed.ejs", { posts, user: req.user });
     } catch (err) {
       console.log(err);
     }
