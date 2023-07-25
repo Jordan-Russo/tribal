@@ -30,7 +30,7 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         caption: req.body.caption,
-        likes: 0,
+        likes: [],
         user: req.user.id,
       });
       console.log("Post has been added!");
@@ -81,4 +81,11 @@ module.exports = {
       res.redirect("/profile");
     }
   },
+  getPostForm: async (req, res) => {
+    try{
+      res.render("createPost.ejs", { user: req.user });
+    } catch(err){
+      console.log(err)
+    }
+  }
 };
