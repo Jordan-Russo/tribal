@@ -3,7 +3,7 @@
   <div class="row justify-content-center mt-5">
     <div class="col-6">
       <h2><%= post.title %></h2>
-      <span>By: <a href="/profile/<%= post.user.id %>"><%= post.user.userName %></a></span>
+      <span>By: <a class="text-decoration-none" href="/profile/<%= post.user.id %>"><%= post.user.userName %></a></span>
       <img class="img-fluid" src="<%= post.image%>" />
       <div class="row justify-content-between">
         <!-- like/unlike button -->
@@ -62,9 +62,10 @@
     <!-- Comments -->
     <div>
       <ul class="row list-unstyled">
-      <% comments.forEach(({content}) => {%>
-        <li class="justify-content-between mt-5">
-          <%=content%>
+      <% comments.forEach(({content, user}) => {%>
+        <li class="mt-5">
+          <span><a class="text-decoration-none" href="/profile/<%= user._id %>"><%= user.userName %></a>:</span>
+          <p class="card card-body"><%=content%></p>
         </li>
       <% }) %>
       </ul>
