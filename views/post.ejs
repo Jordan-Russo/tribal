@@ -3,6 +3,7 @@
   <div class="row justify-content-center mt-5">
     <div class="col-6">
       <h2><%= post.title %></h2>
+      <span>By: <a href="/profile/<%= post.user.id %>"><%= post.user.userName %></a></span>
       <img class="img-fluid" src="<%= post.image%>" />
       <div class="row justify-content-between">
         <!-- like/unlike button -->
@@ -44,7 +45,7 @@
         </form>
         <% } %>
         <h3 class="col-3">Likes: <%= post.likes.length %></h3>
-        <%if(post.user == user.id){ %>
+        <%if(post.user.id == user.id){ %>
         <form
           action="/post/deletePost/<%= post.id %>?_method=DELETE"
           method="POST"
