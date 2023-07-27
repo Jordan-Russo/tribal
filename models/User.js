@@ -5,10 +5,6 @@ const UserSchema = new mongoose.Schema({
   userName: { type: String, unique: true },
   email: { type: String, unique: true },
   password: String,
-  favorites: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Post'
-  }]
 });
 
 // Password hash middleware.
