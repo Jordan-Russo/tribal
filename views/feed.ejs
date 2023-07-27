@@ -1,18 +1,12 @@
-<%- include('partials/header', {user}) -%>
+<%- include('partials/header') -%>
   <div class="container">
-    <div class="justify-content-center">
-      <ul class="row list-unstyled justify-content-center mt-5">
+    <div class="row justify-content-center mt-5">
+      <ul class="row list-unstyled">
         <% for(var i=0; i<posts.length; i++) {%>
-          <li class="px-0" style="max-width: 450px; max-height: 750px;">
+          <li class="col-6 justify-content-between mt-5">
             <a href="/post/<%= posts[i]._id%>">
-              <div class="text-center">
-                <img src="<%= posts[i].image%>" style="max-width: 100%; max-height: 400px;">
-              </div>
+              <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
-            <div class="card-body">
-              <h5 class="card-title"><%= posts[i].title %></h5>
-              <p class="card-text"><%= posts[i].caption %></p>
-            </div>
           </li>
         <% } %>
         </ul>

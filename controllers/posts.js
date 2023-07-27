@@ -1,21 +1,27 @@
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
-const Comment = require("../models/Comment");
 
 module.exports = {
+  getProfile: async (req, res) => {
+    try {
+      const posts = await Post.find({ user: req.user.id });
+      res.render("profile.ejs", { posts: posts, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { posts, user: req.user });
+      res.render("feed.ejs", { posts: posts });
     } catch (err) {
       console.log(err);
     }
   },
   getPost: async (req, res) => {
     try {
-      const post = await Post.findById(req.params.id).populate('user');
-      const comments = await Comment.find({postFrom: req.params.id}).sort({ createdAt: "asc"}).populate('user').lean();
-      res.render("post.ejs", { post, user: req.user, comments});
+      const post = await Post.findById(req.params.id);
+      res.render("post.ejs", { post: post, user: req.user });
     } catch (err) {
       console.log(err);
     }
@@ -30,7 +36,7 @@ module.exports = {
         image: result.secure_url,
         cloudinaryId: result.public_id,
         caption: req.body.caption,
-        likes: [],
+        likes: 0,
         user: req.user.id,
       });
       console.log("Post has been added!");
@@ -41,27 +47,13 @@ module.exports = {
   },
   likePost: async (req, res) => {
     try {
-      await Post.findByIdAndUpdate(
-        req.params.id,
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
         {
-          $push: { likes: req.user.id },
+          $inc: { likes: 1 },
         }
       );
-      console.log(`Like added by ${req.user.id}`);
-      res.redirect(`/post/${req.params.id}`);
-    } catch (err) {
-      console.log(err);
-    }
-  },
-  unlikePost: async (req, res) => {
-    try {
-      await Post.findByIdAndUpdate(
-        req.params.id,
-        {
-          $pull: { likes: req.user.id },
-        }
-      );
-      console.log("Like Removed");
+      console.log("Likes +1");
       res.redirect(`/post/${req.params.id}`);
     } catch (err) {
       console.log(err);
@@ -81,11 +73,4 @@ module.exports = {
       res.redirect("/profile");
     }
   },
-  getPostForm: async (req, res) => {
-    try{
-      res.render("createPost.ejs", { user: req.user });
-    } catch(err){
-      console.log(err)
-    }
-  }
 };
