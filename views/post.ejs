@@ -1,90 +1,84 @@
 <%- include('partials/header', {user}) -%>
 <div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-6">
-      <h2><%= post.title %></h2>
-      <span class="d-block">By: <a class="text-decoration-none" href="/profile/<%= post.user.id %>"><%= post.user.userName %></a></span>
-      <img class="img-fluid" src="<%= post.image%>" />
-      <div class="row justify-content-between">
-        <!-- like/unlike button -->
-        <% if(post.likes.includes(user.id)){ %>
+  <div class="d-flex flex-column align-items-center mt-5">
+    <h2><%= post.title %></h2>
+    <img class="img-fluid" src="<%= post.image %>" style="max-height: 500px; max-width: 100%;"/>
+    <p class="mt-3"><%= post.caption %></p>
+    <span class="d-block align-self-start">By: <a class="text-decoration-none" href="/profile/<%= post.user.id %>"><%= post.user.userName %></a></span>
+    <div class="d-flex justify-content-between mt-3">
+      <!-- like/unlike button -->
+      <% if(post.likes.includes(user.id)){ %>
         <form
-          class="col-1"
           action="/post/unlikePost/<%= post.id %>?_method=PUT"
           method="POST"
         >
           <button class="btn btn-primary fa fa-heart" style="color: pink;" type="submit"></button>
         </form>
-        <% } else { %>
+      <% } else { %>
         <form
-          class="col-1"
           action="/post/likePost/<%= post.id %>?_method=PUT"
           method="POST"
         >
           <button class="btn btn-primary fa fa-heart" 
           type="submit"></button>
         </form>
-        <% } %> 
+      <% } %> 
+        <!-- Likes count -->
+        <span class="h4 mx-5"><strong><%= post.likes.length %></strong></span>
         <!-- favorite / unfavorite button -->
-        <% if(user.favorites.includes(post.id)){ %>
+      <% if(user.favorites.includes(post.id)){ %>
         <form
-        class="col-1"
         action="/favorites/remove/<%= post.id %>?_method=PUT"
         method="POST"
       >
         <button class="btn btn-primary fa fa-star" 
         style="color: gold;" type="submit"></button>
         </form>
-        <% }else{ %>
+      <% }else{ %>
         <form
-        class="col-1"
         action="/favorites/add/<%= post.id %>?_method=PUT"
         method="POST"
       >
         <button class="btn btn-primary fa fa-star" type="submit"></button>
         </form>
-        <% } %>
-        <h3 class="col-3">Likes: <%= post.likes.length %></h3>
-        <%if(post.user.id == user.id){ %>
+      <% } %>
+      <%if(post.user.id == user.id){ %>
         <form
           action="/post/deletePost/<%= post.id %>?_method=DELETE"
           method="POST"
-          class="col-3"
+          class="ms-3"
         >
-          <button class="btn btn-primary fa fa-trash" type="submit"></button>
+          <button class="btn btn-primary text-danger fa fa-trash" type="submit"></button>
         </form>
-        <% } %>
+      <% } %>
+    </div>
+  </div>
+  <!-- Comments -->
+  <div>
+    <ul class="row list-unstyled">
+    <% comments.forEach(({content, user}) => {%>
+      <li class="mt-5">
+        <span><a class="text-decoration-none" href="/profile/<%= user._id %>"><%= user.userName %></a>:</span>
+        <p class="card card-body"><%=content%></p>
+      </li>
+    <% }) %>
+    </ul>
+  </div>  
+  <!-- Adding a Comment -->
+  <div class="mt-5">
+    <h2>Add a comment</h2>
+    <form action="/comment/createComment/<%= post.id%>" method="POST">
+      <div class="mb-3">
+          <label for="title" class="form-label"></label>
+          <textarea type="text" class="form-control" id="title" name="content" placeholder="Write a comment... Let others know what you think!"></textarea>
       </div>
-    </div>
-    <div class="col-3 mt-5">
-      <p><%= post.caption %></p>
-    </div>
-    <!-- Comments -->
-    <div>
-      <ul class="row list-unstyled">
-      <% comments.forEach(({content, user}) => {%>
-        <li class="mt-5">
-          <span><a class="text-decoration-none" href="/profile/<%= user._id %>"><%= user.userName %></a>:</span>
-          <p class="card card-body"><%=content%></p>
-        </li>
-      <% }) %>
-      </ul>
-    </div>  
-    <!-- Adding a Comment -->
-    <div class="mt-5">
-      <h2>Add a comment</h2>
-      <form action="/comment/createComment/<%= post.id%>" method="POST">
-        <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <textarea type="text" class="form-control" id="title" name="content" placeholder="Write a comment... Let others know what you think!"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-      </form>
-    </div>
-    <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
-    </div>
+      <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+    </form>
+  </div>
+  <div class="d-flex justify-content-center mt-3">
+    <a class="btn btn-primary mx-1" href="/profile">Return to Profile</a>
+    <a class="btn btn-primary mx-1" href="/feed">Return to Feed</a>
+  </div>
   </div>
 </div>
 
