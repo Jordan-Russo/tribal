@@ -1,7 +1,7 @@
 # <a target="_blank" href="https://tribal-production.up.railway.app/">Tribal</a>
 
 <a target="_blank" href="https://tribal-production.up.railway.app/">
-  <img src="" alt="Tribal Banner Gif">
+  <img src="/public/imgs/tribalAnimation.gif" alt="Tribal Banner Gif">
 </a>
 
 Return to your community on <a target="_blank" href="https://tribal-production.up.railway.app/" >Tribal</a>! Dive into unforgettable moments and bond with souls that resonate with your vision.
@@ -22,6 +22,11 @@ Return to your community on <a target="_blank" href="https://tribal-production.u
 Built using <a target="_blank" href="https://slides.com/jresiduum/mastering-mvc" >MVC (made a lecture about it)</a> as the server architecture. 
 The model was implemented with Mongoose to handle communications with MongoDB, EJS was the view engine and express was the control.
 Notable middleware includes passport.js to add local strategy authentication to the app and Cloudinary for user-generated image hosting.
+
+## For Demo Use:
+
+Demo Email: guest@tribal.com
+Demo Password: tribaldemo
 
 ## Improvements
 
