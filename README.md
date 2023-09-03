@@ -26,6 +26,7 @@ Notable middleware includes passport.js to add local strategy authentication to 
 ## For Demo Use:
 
 Demo Email: guest@tribal.com
+
 Demo Password: tribaldemo
 
 ## Improvements
