@@ -23,6 +23,9 @@ Built using <a target="_blank" href="https://slides.com/jresiduum/mastering-mvc"
 The model was implemented with Mongoose to handle communications with MongoDB, EJS was the view engine and express was the control.
 Notable middleware includes passport.js to add local strategy authentication to the app and Cloudinary for user-generated image hosting.
 
+A brief wireframe illustrating the flow within the application is included below for your convenience.
+<picture><img src="/public/imgs/tribalWireframe.jpg.jpg" alt="Tribal Wireframe"/></picture>
+
 ## For Demo Use:
 
 Demo Email: guest@tribal.com
