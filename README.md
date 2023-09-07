@@ -19,11 +19,12 @@ Return to your community on <a target="_blank" href="https://tribal-production.u
   <picture><img src="https://img.shields.io/static/v1?label=&message=MONGOOSE&color=285700&style=plastic&logo=mongoose&labelColor=333333" alt="Mongoose"/></picture>
   <picture><img src="https://img.shields.io/static/v1?label=EJS&message=EJS&color=285700&style=plastic&&labelColor=333333" alt="EJS"/></picture>
 </div>
-Built using <a target="_blank" href="https://slides.com/jresiduum/mastering-mvc" >MVC (made a lecture about it)</a> as the server architecture. 
+<p></p>Built using <a target="_blank" href="https://slides.com/jresiduum/mastering-mvc" >MVC (made a lecture about it)</a> as the server architecture. 
 The model was implemented with Mongoose to handle communications with MongoDB, EJS was the view engine and express was the control.
-Notable middleware includes passport.js to add local strategy authentication to the app and Cloudinary for user-generated image hosting.
+Notable middleware includes passport.js to add local strategy authentication to the app and Cloudinary for user-generated image hosting.</p>
 
-A brief wireframe illustrating the flow within the application is included below for your convenience.
+<p>A brief wireframe illustrating the flow within the application is included below for your convenience.</p>
+
 <picture><img src="/public/imgs/tribalWireframe.jpg.jpg" alt="Tribal Wireframe"/></picture>
 
 ## For Demo Use:
