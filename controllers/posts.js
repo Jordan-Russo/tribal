@@ -6,6 +6,13 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      const titleCharLimit = 100;
+      const captionCharLimit = 400;
+      // char limits will shorten the title message and caption for any posts being previewed.
+      posts.forEach(({caption, title}, i) => {
+        if(title.length > titleCharLimit){posts[i].title = `${title.slice(0, titleCharLimit - 3)}...`}
+        if(caption.length > captionCharLimit){posts[i].caption = `${caption.slice(0, captionCharLimit - 3)}...`}
+      });
       res.render("feed.ejs", { posts, user: req.user });
     } catch (err) {
       console.log(err);
