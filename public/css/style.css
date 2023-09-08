@@ -1,0 +1,9 @@
+html{
+  height: 100%;
+}
+body, header{
+  background: #70cf70 fixed url(/textures/brush-stroke-texture.png);
+}
+body{
+  min-height: 100%;
+}
