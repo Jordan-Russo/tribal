@@ -1,4 +1,5 @@
-# <a target="_blank" href="https://tribal-production.up.railway.app/">Tribal</a>
+<p align="center"><a target="_blank" href="https://tribal-production.up.railway.app/"><img src="/public/imgs/tribalLogo.png" height="40"></img></a></p>
+<h1 align="center"><a target="_blank" href="https://tribal-production.up.railway.app/">VISIT HERE</a></h1>
 
 <a target="_blank" href="https://tribal-production.up.railway.app/">
   <img src="/public/imgs/tribalAnimation.gif" alt="Tribal Banner Gif">
@@ -29,7 +30,7 @@ Notable middleware includes passport.js to add local strategy authentication to 
 
 ## For Demo Use:
 
-Demo Email: guest@tribal.com
+Demo Email: <span>guest@</span><span>tribal.com</span>
 
 Demo Password: tribaldemo
 
