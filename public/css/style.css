@@ -2,8 +2,30 @@ html{
   height: 100%;
 }
 body, header{
-  background: #70cf70 fixed url(/textures/brush-stroke-texture.png);
+  background: linear-gradient(45deg, #00856A, #D0B078) fixed, fixed url(/textures/brush-stroke-texture.png);
+  background-blend-mode: hard-light;
 }
 body{
   min-height: 100%;
+}
+header{
+  backdrop-filter: blur(10px);
+  opacity: 0.8;
+  &:hover {
+    opacity: 1;
+  }
+}
+.nav-link{
+  color: #792633;
+  font-size: 1.25rem;
+}
+footer a{
+  color: #df445b;
+}
+
+/* Handles Navbar at small viewports */
+@media (width < 375px){
+  nav.navbar>div.container-fluid{
+    justify-content: center;
+  }
 }
