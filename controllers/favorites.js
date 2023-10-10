@@ -2,12 +2,15 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 const User = require("../models/User")
+const {formatPosts} = require("./posts")
 
 module.exports = {
   getFavorites: async (req, res) => {
     try {
       const client = await User.findById(req.user.id).populate('favorites');
-      const posts = client.favorites
+      const posts = client.favorites.reverse();
+      formatPosts(posts);
+      // for reverse chronological order
       res.render("feed.ejs", { posts, user: req.user });
     } catch (err) {
       console.log(err);

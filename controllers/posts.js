@@ -3,9 +3,19 @@ const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 
 module.exports = {
+  formatPosts: function(posts){
+    const titleCharLimit = 100;
+    const captionCharLimit = 400;
+    // char limits will shorten the title message and caption for any posts being previewed.
+    posts.forEach(({caption, title}, i) => {
+      if(title.length > titleCharLimit){posts[i].title = `${title.slice(0, titleCharLimit - 3)}...`}
+      if(caption.length > captionCharLimit){posts[i].caption = `${caption.slice(0, captionCharLimit - 3)}...`}
+    });
+  },
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      module.exports.formatPosts(posts);
       res.render("feed.ejs", { posts, user: req.user });
     } catch (err) {
       console.log(err);
@@ -25,7 +35,7 @@ module.exports = {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
 
-      await Post.create({
+      const newPost = await Post.create({
         title: req.body.title,
         image: result.secure_url,
         cloudinaryId: result.public_id,
@@ -34,7 +44,7 @@ module.exports = {
         user: req.user.id,
       });
       console.log("Post has been added!");
-      res.redirect("/profile");
+      res.redirect(`/post/${newPost.id}`);
     } catch (err) {
       console.log(err);
     }
