@@ -37,6 +37,10 @@ footer a{
     color: inherit;
     text-decoration: inherit;
 }
+.post img{
+  max-width: 100%; 
+  max-height: 400px;
+}
 .post{
   flex-grow: 1;
   flex-shrink: 1;
