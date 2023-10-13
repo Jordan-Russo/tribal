@@ -47,6 +47,7 @@ footer a{
   min-width: 320px;
   max-width: calc(50% - var(--gap-size));
   background: #fff3;
+  backdrop-filter: blur(3px);
   border-radius: var(--gap-size);
 }
 /* Handles Navbar at small viewports */
