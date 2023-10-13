@@ -11,13 +11,19 @@ body{
 header{
   backdrop-filter: blur(10px);
   opacity: 0.8;
-  &:hover {
+  &:hover, &:active {
     opacity: 1;
   }
 }
 .nav-link{
   color: #792633;
-  font-size: 1.25rem;
+  font-weight: bold;
+  font-size: 1.3vw;
+}
+.navbar-routes a{
+  &:hover, &:active {
+    color: #df445b;
+  }
 }
 footer a{
   color: #df445b;
