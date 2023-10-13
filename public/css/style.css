@@ -23,6 +23,10 @@ footer a{
   color: #df445b;
 }
 
+.post a{
+    color: inherit;
+    text-decoration: inherit;
+}
 /* Handles Navbar at small viewports */
 @media (width < 375px){
   nav.navbar>div.container-fluid{
