@@ -3,9 +3,9 @@
     <div class="justify-content-center">
       <ul class="post-container row list-unstyled mt-5">
         <% for(var i=0; i<posts.length; i++) {%>
-          <li class="post py-5">
+          <li class="post">
             <a href="/post/<%= posts[i]._id%>">
-              <div class="text-center">
+              <div class="text-center pt-5">
                 <img src="<%= posts[i].image%>">
               </div>
               <div class="card-body">

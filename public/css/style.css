@@ -28,9 +28,9 @@ header{
 footer a{
   color: #df445b;
 }
-
 .post-container{
   --gap-size: 25px;
+  text-align: left;
   gap: var(--gap-size);
 }
 .post a{
@@ -38,8 +38,13 @@ footer a{
     text-decoration: inherit;
 }
 .post img{
+  padding: 0 25px;
   max-width: 100%; 
   max-height: 400px;
+}
+.row>.post{
+  padding: 0;
+  /* overwrites bootstrap properties */
 }
 .post{
   flex-grow: 1;
@@ -47,8 +52,12 @@ footer a{
   min-width: 320px;
   max-width: calc(50% - var(--gap-size));
   background: #fff3;
-  backdrop-filter: blur(3px);
   border-radius: var(--gap-size);
+  backdrop-filter: blur(2px);
+  &:hover, &:active{
+    backdrop-filter: blur(5px);
+    outline: solid 2px #000;
+  }
 }
 /* Handles Navbar at small viewports */
 @media (width < 375px){
