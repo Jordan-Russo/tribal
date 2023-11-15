@@ -1,14 +1,14 @@
-<p align="center"><a target="_blank" href="https://tribal-production.up.railway.app/"><img src="/public/imgs/tribalLogo.png" height="40"></img></a></p>
-<h1 align="center"><a target="_blank" href="https://tribal-production.up.railway.app/">VISIT HERE</a></h1>
+<p align="center"><a target="_blank" href="https://tribal-pvj0.onrender.com/"><img src="/public/imgs/tribalLogo.png" height="40"></img></a></p>
+<h1 align="center"><a target="_blank" href="https://tribal-pvj0.onrender.com/">VISIT HERE</a></h1>
 
-<a target="_blank" href="https://tribal-production.up.railway.app/">
+<a target="_blank" href="https://tribal-pvj0.onrender.com/">
   <img src="/public/imgs/tribalAnimation.gif" alt="Tribal Banner Gif">
 </a>
 
 <br/>
 <br/>
 
-<p>Return to your community on <a target="_blank" href="https://tribal-production.up.railway.app/">Tribal</a>! Dive into unforgettable moments and grow your tribe by bonding with other souls that resonate with you.</p>
+<p>Return to your community on <a target="_blank" href="https://tribal-pvj0.onrender.com/">Tribal</a>! Dive into unforgettable moments and grow your tribe by bonding with other souls that resonate with you.</p>
 
 ## How It's Made:
 
