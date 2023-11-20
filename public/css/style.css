@@ -11,21 +11,62 @@ body{
 header{
   backdrop-filter: blur(10px);
   opacity: 0.8;
-  &:hover {
+  &:hover, &:active {
     opacity: 1;
   }
 }
 .nav-link{
   color: #792633;
-  font-size: 1.25rem;
+  font-weight: bold;
+  font-size: 1.3vw;
+}
+.navbar-routes a{
+  &:hover, &:active {
+    color: #df445b;
+  }
 }
 footer a{
   color: #df445b;
 }
-
+.post-container{
+  --gap-size: 25px;
+  text-align: left;
+  gap: var(--gap-size);
+}
+.post a{
+    color: inherit;
+    text-decoration: inherit;
+}
+.post img{
+  padding: 0 25px;
+  max-width: 100%; 
+  max-height: 400px;
+}
+.row>.post{
+  padding: 0;
+  /* overwrites bootstrap properties */
+}
+.post{
+  flex-grow: 1;
+  flex-shrink: 1;
+  min-width: 320px;
+  max-width: calc(50% - var(--gap-size));
+  background: #fff3;
+  border-radius: var(--gap-size);
+  backdrop-filter: blur(2px);
+  &:hover, &:active{
+    backdrop-filter: blur(5px);
+    outline: solid 2px #000;
+  }
+}
 /* Handles Navbar at small viewports */
 @media (width < 375px){
   nav.navbar>div.container-fluid{
     justify-content: center;
+  }
+}
+@media(width < 1000px){
+  .post{
+    max-width: 100%;
   }
 }
