@@ -5,8 +5,8 @@ const { ensureAuth } = require("../middleware/auth");
 
 router.get("/", ensureAuth, favoritesController.getFavorites);
 
-router.put("/add/:id", favoritesController.addFavorite);
+router.put("/add/:id", ensureAuth, favoritesController.addFavorite);
 
-router.put("/remove/:id", favoritesController.removeFavorite);
+router.put("/remove/:id", ensureAuth, favoritesController.removeFavorite);
 
 module.exports = router;
