@@ -1,13 +1,13 @@
 <%- include('partials/header', {user}) -%>
 <div class="container">
-  <div class="d-flex flex-column align-items-center mt-5">
-    <h2 class="text-break"><%= post.title %></h2>
+  <div class="d-flex flex-column align-items-center mt-5 story">
+    <h2><%= post.title %></h2>
     <img class="img-fluid" src="<%= post.image %>" style="max-height: 500px; max-width: 100%;"/>
     <p class="mt-3 text-break"><%= post.caption %></p>
     <span class="d-block align-self-start">By: <a class="text-decoration-none" href="/profile/<%= post.user.id %>"><%= post.user.userName %></a></span>
     <div class="d-flex justify-content-between mt-3">
       <!-- like/unlike button -->
-      <% if(post.likes.includes(user.id)){ %>
+      <% if(post.likes.includes(user?.id)){ %>
         <form
           action="/post/unlikePost/<%= post.id %>?_method=PUT"
           method="POST"
@@ -26,7 +26,7 @@
         <!-- Likes count -->
         <span class="h4 mx-5"><strong><%= post.likes.length %></strong></span>
         <!-- favorite / unfavorite button -->
-      <% if(user.favorites.includes(post.id)){ %>
+      <% if(user?.favorites.includes(post.id)){ %>
         <form
         action="/favorites/remove/<%= post.id %>?_method=PUT"
         method="POST"
@@ -42,7 +42,7 @@
         <button class="btn btn-primary fa fa-star" type="submit"></button>
         </form>
       <% } %>
-      <%if(post.user.id == user.id){ %>
+      <%if(post.user.id == user?.id){ %>
         <form
           action="/post/deletePost/<%= post.id %>?_method=DELETE"
           method="POST"
@@ -70,7 +70,11 @@
     <form action="/comment/createComment/<%= post.id%>" method="POST">
       <div class="mb-3">
           <label for="title" class="form-label"></label>
-          <textarea type="text" class="form-control" id="title" name="content" placeholder="Write a comment... Let others know what you think!" required></textarea>
+          <% if(user){ %>
+            <textarea type="text" class="form-control" id="title" name="content" placeholder="Write a comment... Let others know what you think!" required></textarea>
+          <% }else{ %>
+            <textarea type="text" class="form-control" id="title" name="content" disabled>You need to be logged in to comment, sign up or login!</textarea>
+          <% } %>
       </div>
       <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
     </form>
