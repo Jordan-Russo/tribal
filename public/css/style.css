@@ -18,7 +18,7 @@ header{
 .nav-link{
   color: #792633;
   font-weight: bold;
-  font-size: 1.3vw;
+  font-size: max(1.3vw, 1.3em);
 }
 .navbar-routes a{
   &:hover, &:active {
@@ -68,5 +68,20 @@ footer a{
 @media(width < 1000px){
   .post{
     max-width: 100%;
+  }
+}
+
+/* add new style that goes over a div  */
+.story{
+  background: #fff5;
+  border-radius: 25px;
+  padding: 10px 50px;
+  @media (max-width: 990px){
+    text-align: justify;
+    padding: 10px 5px;
+    & h2{
+      text-align: center;
+      text-wrap: balance;
+    }
   }
 }
