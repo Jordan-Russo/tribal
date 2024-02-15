@@ -1,7 +1,7 @@
 <%- include('partials/header', {user}) -%>
 <div class="container">
   <div class="row justify-content-center mt-5 text-center">
-      <h1>Profile of <strong><%= user.userName %></strong></h1>
+      <h1>Profile of <strong><%= profile.userName %></strong></h1>
       <% if(ownProfile && posts.length === 0){ %>
         <div class="col-6 mb-3">
           <p>You currently do not have any posts. Make your first post to engage and celebrate with your community.</p>
