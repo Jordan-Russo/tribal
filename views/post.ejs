@@ -57,7 +57,7 @@
   <div>
     <ul class="row list-unstyled">
     <% comments.forEach(({content, user}) => {%>
-      <li class="mt-5">
+      <li class="mt-5 comment">
         <span><a class="text-decoration-none" href="/profile/<%= user._id %>"><%= user.userName %></a>:</span>
         <p class="card card-body text-break"><%=content%></p>
       </li>

@@ -14,7 +14,7 @@ module.exports = {
       const posts = await Post.find({ user: req.params.id }).sort({ createdAt: "desc"}).lean();
       formatPosts(posts);
       const userInfo = await User.findById(req.params.id).lean()
-      res.render("profile.ejs", { posts, user: userInfo, ownProfile: req.user.id === req.params.id });
+      res.render("profile.ejs", { posts, user: req.user, profile: userInfo, ownProfile: req.user?.id === req.params.id });
     } catch (err) {
       console.log(err);
     }
