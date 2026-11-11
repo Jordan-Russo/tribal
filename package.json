@@ -19,7 +19,7 @@
     "express-session": "^1.17.1",
     "method-override": "^3.0.0",
     "mongodb": "^3.6.5",
-    "mongoose": "^8.24.1",
+    "mongoose": "^8.24.7",
     "morgan": "^1.12.1",
     "multer": "^2.5.0",
     "passport": "^0.6.0",
